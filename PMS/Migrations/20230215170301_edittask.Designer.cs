@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS.Data;
 
@@ -10,9 +11,11 @@ using PMS.Data;
 namespace PMS.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230215170301_edittask")]
+    partial class edittask
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,29 +35,6 @@ namespace PMS.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Milestones");
-                });
-
-            modelBuilder.Entity("PMS.Model.SubTask", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("TaskId")
-                        .HasColumnType("int");
-
-                    b.Property<int?>("TasksId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("TasksId");
-
-                    b.ToTable("SubTasks");
                 });
 
             modelBuilder.Entity("PMS.Model.Tasks", b =>
@@ -96,13 +76,6 @@ namespace PMS.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("PMS.Model.SubTask", b =>
-                {
-                    b.HasOne("PMS.Model.Tasks", null)
-                        .WithMany("SubTasks")
-                        .HasForeignKey("TasksId");
-                });
-
             modelBuilder.Entity("PMS.Model.Tasks", b =>
                 {
                     b.HasOne("PMS.Model.Milestone", null)
@@ -115,11 +88,6 @@ namespace PMS.Migrations
             modelBuilder.Entity("PMS.Model.Milestone", b =>
                 {
                     b.Navigation("Tasks");
-                });
-
-            modelBuilder.Entity("PMS.Model.Tasks", b =>
-                {
-                    b.Navigation("SubTasks");
                 });
 #pragma warning restore 612, 618
         }

@@ -12,10 +12,11 @@ namespace PMS.Data
         //public DbSet<Todo> Todos { get; set; }
         //public DbSet<Project> Projects { get; set; }
        public DbSet<Tasks> Tasks { get; set; }
-       //  public DbSet<Budget> Budgets { get; set; }
-       // public DbSet<Client> Clients { get; set; }
-      //  public DbSet<Employee> Employees { get; set; }
-      //  public DbSet<Member> Members { get; set; }
+        public DbSet<SubTask> SubTasks { get; set; }
+        //  public DbSet<Budget> Budgets { get; set; }
+        // public DbSet<Client> Clients { get; set; }
+        //  public DbSet<Employee> Employees { get; set; }
+        //  public DbSet<Member> Members { get; set; }
         public DbSet<Milestone> Milestones{ get; set; }
       //  public DbSet<Solutions> Solutions { get; set; }
 

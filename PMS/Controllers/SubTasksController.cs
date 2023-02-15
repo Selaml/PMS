@@ -12,49 +12,47 @@ namespace PMS.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class TasksController : ControllerBase
+    public class SubTasksController : ControllerBase
     {
         private readonly DatabaseContext _context;
 
-        public TasksController(DatabaseContext context)
+        public SubTasksController(DatabaseContext context)
         {
             _context = context;
         }
 
-        // GET: api/Tasks
+        // GET: api/SubTasks
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Tasks>>> GetTasks()
+        public async Task<ActionResult<IEnumerable<SubTask>>> GetSubTasks()
         {
-            return await _context.Tasks
-              
-                .ToListAsync();
+            return await _context.SubTasks.ToListAsync();
         }
 
-        // GET: api/Tasks/5
+        // GET: api/SubTasks/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Tasks>> GetTasks(int id)
+        public async Task<ActionResult<SubTask>> GetSubTask(int id)
         {
-            var tasks = await _context.Tasks.FindAsync(id);
+            var subTask = await _context.SubTasks.FindAsync(id);
 
-            if (tasks == null)
+            if (subTask == null)
             {
                 return NotFound();
             }
 
-            return tasks;
+            return subTask;
         }
 
-        // PUT: api/Tasks/5
+        // PUT: api/SubTasks/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutTasks(int id, Tasks tasks)
+        public async Task<IActionResult> PutSubTask(int id, SubTask subTask)
         {
-            if (id != tasks.Id)
+            if (id != subTask.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(tasks).State = EntityState.Modified;
+            _context.Entry(subTask).State = EntityState.Modified;
 
             try
             {
@@ -62,7 +60,7 @@ namespace PMS.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!TasksExists(id))
+                if (!SubTaskExists(id))
                 {
                     return NotFound();
                 }
@@ -75,36 +73,36 @@ namespace PMS.Controllers
             return NoContent();
         }
 
-        // POST: api/Tasks
+        // POST: api/SubTasks
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Tasks>> PostTasks(Tasks tasks)
+        public async Task<ActionResult<SubTask>> PostSubTask(SubTask subTask)
         {
-            _context.Tasks.Add(tasks);
+            _context.SubTasks.Add(subTask);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetTasks", new { id = tasks.Id }, tasks);
+            return CreatedAtAction("GetSubTask", new { id = subTask.Id }, subTask);
         }
 
-        // DELETE: api/Tasks/5
+        // DELETE: api/SubTasks/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteTasks(int id)
+        public async Task<IActionResult> DeleteSubTask(int id)
         {
-            var tasks = await _context.Tasks.FindAsync(id);
-            if (tasks == null)
+            var subTask = await _context.SubTasks.FindAsync(id);
+            if (subTask == null)
             {
                 return NotFound();
             }
 
-            _context.Tasks.Remove(tasks);
+            _context.SubTasks.Remove(subTask);
             await _context.SaveChangesAsync();
 
             return NoContent();
         }
 
-        private bool TasksExists(int id)
+        private bool SubTaskExists(int id)
         {
-            return _context.Tasks.Any(e => e.Id == id);
+            return _context.SubTasks.Any(e => e.Id == id);
         }
     }
 }

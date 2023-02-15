@@ -36,7 +36,7 @@ namespace PMS.Controllers
         public async Task<ActionResult<Milestone>> GetMilestone(int id)
         {
             var milestone = await _context.Milestones
-                .Include(a => a.Tasks)
+                .Include(a => a.Tasks).ThenInclude(a=> a.SubTasks)
                 .SingleOrDefaultAsync(g => g.Id == id);
 
             if (milestone == null)

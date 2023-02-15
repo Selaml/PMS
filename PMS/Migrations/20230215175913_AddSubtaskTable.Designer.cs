@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS.Data;
 
@@ -10,9 +11,11 @@ using PMS.Data;
 namespace PMS.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230215175913_AddSubtaskTable")]
+    partial class AddSubtaskTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -47,12 +50,7 @@ namespace PMS.Migrations
                     b.Property<int>("TaskId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("TasksId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("TasksId");
 
                     b.ToTable("SubTasks");
                 });
@@ -96,11 +94,19 @@ namespace PMS.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("PMS.Model.SubTask", b =>
+            modelBuilder.Entity("SubTaskTasks", b =>
                 {
-                    b.HasOne("PMS.Model.Tasks", null)
-                        .WithMany("SubTasks")
-                        .HasForeignKey("TasksId");
+                    b.Property<int>("SubTasksId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TasksId")
+                        .HasColumnType("int");
+
+                    b.HasKey("SubTasksId", "TasksId");
+
+                    b.HasIndex("TasksId");
+
+                    b.ToTable("SubTaskTasks");
                 });
 
             modelBuilder.Entity("PMS.Model.Tasks", b =>
@@ -112,14 +118,24 @@ namespace PMS.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("SubTaskTasks", b =>
+                {
+                    b.HasOne("PMS.Model.SubTask", null)
+                        .WithMany()
+                        .HasForeignKey("SubTasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("PMS.Model.Tasks", null)
+                        .WithMany()
+                        .HasForeignKey("TasksId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("PMS.Model.Milestone", b =>
                 {
                     b.Navigation("Tasks");
-                });
-
-            modelBuilder.Entity("PMS.Model.Tasks", b =>
-                {
-                    b.Navigation("SubTasks");
                 });
 #pragma warning restore 612, 618
         }
