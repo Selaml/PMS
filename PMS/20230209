@@ -1,0 +1,111 @@
+2023-02-09 01:31:10.646 -08:00 [INF] Application Started
+2023-02-09 01:32:25.086 -08:00 [INF] Application started. Press Ctrl+C to shut down.
+2023-02-09 01:32:25.094 -08:00 [INF] Hosting environment: "Development"
+2023-02-09 01:32:25.335 -08:00 [INF] Content root path: "C:\\Users\\sl\\source\\repos\\PMS\\PMS"
+2023-02-09 01:32:26.180 -08:00 [INF] Request starting HTTP/2 GET https://localhost:44385/swagger/index.html - -
+2023-02-09 01:32:40.626 -08:00 [INF] Request finished HTTP/2 GET https://localhost:44385/swagger/index.html - - - 200 - text/html;charset=utf-8 14411.6908ms
+2023-02-09 01:33:33.617 -08:00 [INF] Request starting HTTP/2 GET https://localhost:44385/_framework/aspnetcore-browser-refresh.js - -
+2023-02-09 01:33:33.711 -08:00 [INF] Request finished HTTP/2 GET https://localhost:44385/_framework/aspnetcore-browser-refresh.js - - - 200 11976 application/javascript;+charset=utf-8 75.9906ms
+2023-02-09 01:34:46.830 -08:00 [INF] Request starting HTTP/2 GET https://localhost:44385/swagger/v1/swagger.json - -
+2023-02-09 01:34:48.353 -08:00 [INF] Request finished HTTP/2 GET https://localhost:44385/swagger/v1/swagger.json - - - 200 - application/json;charset=utf-8 1522.9221ms
+2023-02-09 02:30:55.655 -08:00 [INF] Request starting HTTP/2 GET https://localhost:44385/api/Projects - -
+2023-02-09 02:31:40.079 -08:00 [INF] Executing endpoint '"PMS.Controllers.ProjectsController.GetProjects (PMS)"'
+2023-02-09 02:31:45.796 -08:00 [INF] Route matched with "{action = \"GetProjects\", controller = \"Projects\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[PMS.Model.Project]]] GetProjects()" on controller "PMS.Controllers.ProjectsController" ("PMS").
+2023-02-09 02:33:34.553 -08:00 [INF] Executed action "PMS.Controllers.ProjectsController.GetProjects (PMS)" in 108620.7451ms
+2023-02-09 02:33:34.889 -08:00 [INF] Executed endpoint '"PMS.Controllers.ProjectsController.GetProjects (PMS)"'
+2023-02-09 02:33:35.069 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (No connection could be made because the target machine actively refused it. (localhost:4000))
+ ---> System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (localhost:4000)
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at PMS.Controllers.ProjectsController.GetProjects() in C:\Users\sl\source\repos\PMS\PMS\Controllers\ProjectsController.cs:line 30
+   at lambda_method6(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-02-09 02:33:55.845 -08:00 [INF] Request finished HTTP/2 GET https://localhost:44385/api/Projects - - - 500 - text/plain;+charset=utf-8 182073.4507ms
+2023-02-09 02:38:12.819 -08:00 [INF] Request starting HTTP/2 GET https://localhost:44385/api/Projects - -
+2023-02-09 02:38:13.565 -08:00 [INF] Executing endpoint '"PMS.Controllers.ProjectsController.GetProjects (PMS)"'
+2023-02-09 02:38:13.566 -08:00 [INF] Route matched with "{action = \"GetProjects\", controller = \"Projects\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[PMS.Model.Project]]] GetProjects()" on controller "PMS.Controllers.ProjectsController" ("PMS").
+2023-02-09 02:38:21.939 -08:00 [INF] Executed action "PMS.Controllers.ProjectsController.GetProjects (PMS)" in 8372.7148ms
+2023-02-09 02:38:21.939 -08:00 [INF] Executed endpoint '"PMS.Controllers.ProjectsController.GetProjects (PMS)"'
+2023-02-09 02:38:21.941 -08:00 [ERR] An unhandled exception has occurred while executing the request.
+System.AggregateException: One or more errors occurred. (No connection could be made because the target machine actively refused it. (localhost:4000))
+ ---> System.Net.Http.HttpRequestException: No connection could be made because the target machine actively refused it. (localhost:4000)
+ ---> System.Net.Sockets.SocketException (10061): No connection could be made because the target machine actively refused it.
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+   at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+   at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|277_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(HttpRequestMessage request)
+   at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.GetHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+   at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+   at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+   --- End of inner exception stack trace ---
+   at System.Threading.Tasks.Task.ThrowIfExceptional(Boolean includeTaskCanceledExceptions)
+   at System.Threading.Tasks.Task`1.GetResultCore(Boolean waitCompletionNotification)
+   at System.Threading.Tasks.Task`1.get_Result()
+   at PMS.Controllers.ProjectsController.GetProjects() in C:\Users\sl\source\repos\PMS\PMS\Controllers\ProjectsController.cs:line 30
+   at lambda_method6(Closure , Object )
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ActionMethodExecutor.AwaitableObjectResultExecutor.Execute(IActionResultTypeMapper mapper, ObjectMethodExecutor executor, Object controller, Object[] arguments)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeActionMethodAsync>g__Awaited|12_0(ControllerActionInvoker invoker, ValueTask`1 actionResultValueTask)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.<InvokeNextActionFilterAsync>g__Awaited|10_0(ControllerActionInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Rethrow(ActionExecutedContextSealed context)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.Next(State& next, Scope& scope, Object& state, Boolean& isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ControllerActionInvoker.InvokeInnerFilterAsync()
+--- End of stack trace from previous location ---
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeFilterPipelineAsync>g__Awaited|20_0(ResourceInvoker invoker, Task lastTask, State next, Scope scope, Object state, Boolean isCompleted)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Mvc.Infrastructure.ResourceInvoker.<InvokeAsync>g__Logged|17_1(ResourceInvoker invoker)
+   at Microsoft.AspNetCore.Routing.EndpointMiddleware.<Invoke>g__AwaitRequestTask|6_0(Endpoint endpoint, Task requestTask, ILogger logger)
+   at Microsoft.AspNetCore.Authorization.AuthorizationMiddleware.Invoke(HttpContext context)
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at Swashbuckle.AspNetCore.SwaggerUI.SwaggerUIMiddleware.Invoke(HttpContext httpContext)
+   at Swashbuckle.AspNetCore.Swagger.SwaggerMiddleware.Invoke(HttpContext httpContext, ISwaggerProvider swaggerProvider)
+   at Microsoft.AspNetCore.Diagnostics.DeveloperExceptionPageMiddleware.Invoke(HttpContext context)
+2023-02-09 02:38:22.027 -08:00 [INF] Request finished HTTP/2 GET https://localhost:44385/api/Projects - - - 500 - text/plain;+charset=utf-8 9208.8089ms
+2023-02-09 02:48:05.441 -08:00 [INF] Request starting HTTP/2 GET https://localhost:44385/api/Projects - -
+2023-02-09 02:48:06.154 -08:00 [INF] Executing endpoint '"PMS.Controllers.ProjectsController.GetProjects (PMS)"'
+2023-02-09 02:48:06.154 -08:00 [INF] Route matched with "{action = \"GetProjects\", controller = \"Projects\"}". Executing controller action with signature "System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.ActionResult`1[System.Collections.Generic.IEnumerable`1[PMS.Model.Project]]] GetProjects()" on controller "PMS.Controllers.ProjectsController" ("PMS").
+2023-02-09 02:48:22.306 -08:00 [INF] Executing JsonResult, writing value of type '"System.Net.Http.HttpConnectionResponseContent"'.
+2023-02-09 02:48:25.057 -08:00 [INF] Executed action "PMS.Controllers.ProjectsController.GetProjects (PMS)" in 18903.326ms
+2023-02-09 02:48:25.057 -08:00 [INF] Executed endpoint '"PMS.Controllers.ProjectsController.GetProjects (PMS)"'
+2023-02-09 02:48:25.058 -08:00 [INF] Request finished HTTP/2 GET https://localhost:44385/api/Projects - - - 200 - application/json;+charset=utf-8 19617.0991ms
