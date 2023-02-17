@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Desktop\\PMS\\PMS\\PMS.csproj": {}
+    "C:\\Users\\sl\\Desktop\\PMS\\PMS\\PMS\\PMS.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Desktop\\PMS\\PMS\\PMS.csproj": {
+    "C:\\Users\\sl\\Desktop\\PMS\\PMS\\PMS\\PMS.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Desktop\\PMS\\PMS\\PMS.csproj",
+        "projectUniqueName": "C:\\Users\\sl\\Desktop\\PMS\\PMS\\PMS\\PMS.csproj",
         "projectName": "PMS",
-        "projectPath": "C:\\Users\\user\\Desktop\\PMS\\PMS\\PMS.csproj",
-        "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Desktop\\PMS\\PMS\\obj\\",
+        "projectPath": "C:\\Users\\sl\\Desktop\\PMS\\PMS\\PMS\\PMS.csproj",
+        "packagesPath": "C:\\Users\\sl\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\sl\\Desktop\\PMS\\PMS\\PMS\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\sl\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -118,7 +118,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
         }
       }
     }

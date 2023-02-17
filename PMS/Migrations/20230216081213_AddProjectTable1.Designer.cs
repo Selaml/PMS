@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PMS.Data;
 
@@ -10,9 +11,11 @@ using PMS.Data;
 namespace PMS.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20230216081213_AddProjectTable1")]
+    partial class AddProjectTable1
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -25,48 +28,13 @@ namespace PMS.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    b.Property<int>("ProjectId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProjectId");
-
                     b.ToTable("Milestones");
-                });
-
-            modelBuilder.Entity("PMS.Model.Project", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ContractSignDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("LcOppeningDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
-                    b.Property<int>("NumberOfMilestones")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("PlannedEndDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.Property<DateTime>("PlannedStartDate")
-                        .HasColumnType("datetime(6)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Projects");
                 });
 
             modelBuilder.Entity("PMS.Model.SubTask", b =>
@@ -128,15 +96,6 @@ namespace PMS.Migrations
                     b.ToTable("Tasks");
                 });
 
-            modelBuilder.Entity("PMS.Model.Milestone", b =>
-                {
-                    b.HasOne("PMS.Model.Project", null)
-                        .WithMany("Milestones")
-                        .HasForeignKey("ProjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-                });
-
             modelBuilder.Entity("PMS.Model.SubTask", b =>
                 {
                     b.HasOne("PMS.Model.Tasks", null)
@@ -158,11 +117,6 @@ namespace PMS.Migrations
             modelBuilder.Entity("PMS.Model.Milestone", b =>
                 {
                     b.Navigation("Tasks");
-                });
-
-            modelBuilder.Entity("PMS.Model.Project", b =>
-                {
-                    b.Navigation("Milestones");
                 });
 
             modelBuilder.Entity("PMS.Model.Tasks", b =>

@@ -6,7 +6,8 @@ namespace PMS.Model
     {
         public int Id { get; set; }
         public string  Name { get; set; }
-        public int TaskId { get; set; }
+       
+        public int TasksId { get; set; }
 
      
     }

@@ -10,7 +10,7 @@ namespace PMS.Data
         public DatabaseContext(DbContextOptions<DatabaseContext> options) : base(options)
         { }
         //public DbSet<Todo> Todos { get; set; }
-        //public DbSet<Project> Projects { get; set; }
+        public DbSet<Project> Projects { get; set; }
        public DbSet<Tasks> Tasks { get; set; }
         public DbSet<SubTask> SubTasks { get; set; }
         //  public DbSet<Budget> Budgets { get; set; }
@@ -25,8 +25,9 @@ namespace PMS.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-          //  builder.ApplyConfiguration(new ProjectConfiguration());
+          builder.ApplyConfiguration(new ProjectConfiguration());
             builder.ApplyConfiguration(new TaskConfiguration());
+            builder.ApplyConfiguration(new Milestoneconfiguration());
         }
     }
 }

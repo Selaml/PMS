@@ -7,7 +7,7 @@ namespace PMS.Model
         public int Id { get; set; }
         public string Title { get; set; }
       //  public Project Project { get; set; }
-       // public int ProjectId { get; set; }
+       public int ProjectId { get; set; }
 
         public ICollection<Tasks> Tasks { get; set; }
         public Milestone()

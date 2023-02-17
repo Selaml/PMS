@@ -10,7 +10,7 @@ using PMS.Model;
 
 namespace PMS.Controllers
 {
-    /*[Route("api/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class ProjectsController : ControllerBase
     {
@@ -25,14 +25,13 @@ namespace PMS.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Project>>> GetProjects()
         {
-           HttpClient client =new HttpClient();
+          /* HttpClient client =new HttpClient();
             string url = string.Format("http://localhost:4000/employeesroll");
             HttpResponseMessage response = client.GetAsync(url).Result;
-            return new JsonResult(response.Content.ReadAsStringAsync().Result);
+            return new JsonResult(response.Content.ReadAsStringAsync().Result);*/
             return await _context.Projects
              
-                .Include(a => a.Milestones).ThenInclude(a=>a.Project)
-                .Include(a => a.Milestones).ThenInclude(a => a.Tasks)
+                
                 .ToListAsync();
         }
 
@@ -40,11 +39,9 @@ namespace PMS.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Project>> GetProject(int id)
         {
-            var project = await _context.Projects 
-             
-                .Include(a => a.Milestones).ThenInclude(a => a.Project)
-                .Include(a => a.Milestones).ThenInclude(a => a.Tasks)
-                .SingleOrDefaultAsync(g=> g.Id == id);
+            var project = await _context.Projects.FindAsync(id);
+
+        
 
             if (project == null)
             {
@@ -116,5 +113,5 @@ namespace PMS.Controllers
         {
             return _context.Projects.Any(e => e.Id == id);
         }
-    }*/
+    }
 }
